@@ -1,0 +1,13 @@
+Package: ynabR
+Type: Package
+Title: A Package for using the YNAB API
+Version: 0.1.0
+Author: Who wrote it
+Maintainers@R: person(given = "Alex K.", family = "Gold", email = 
+           "alexkgold@gmail.com", role = c("aut", "cre"))
+Description: You Need a Budget (YNAB) is a wonderful web app for budgeting. 
+  They recently opened up an API for use by users. This package is designed to 
+  give YNAB-lovers access to the API in R.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
