@@ -19,11 +19,25 @@ eps <- c(simple_eps, names(within_opts))
 #######################################################
 #                 URL Building Fns                    #
 #######################################################
+#' Get full URL
+#'
+#' @param token access token
+#' @param ep which endpoint?
+#' @param id endpoint id if just one element
+#' @param within get endpoint within one element
+#' @param within_id id for within
+#'
+#' @return full url, character of length 1
+#' @export
+#'
+#' @examples
+#' get_url("secretxxxx", "budgets")
+#' get_url("secretxxxx", "budgets", 1244)
 get_url <- function(token, ep, id = "",
                       within = "", within_id = "") {
   stopifnot(ep %in% eps)
 
-  base_url() %>%
+  base_url %>%
     url_ep(ep, id, within, within_id) %>%
     add_token(token)
 }
@@ -32,17 +46,17 @@ url_ep <- function(url, ep, id = "",
                    within = "", within_id = "") {
   stopifnot(ep %in% eps)
   if (within != "") {
-    add_within(url, within, within_id)
+    url <- add_within(url, ep, within, within_id)
   }
 
   add_ep(url, ep, id)
 
 }
 
-add_within <- function(url, within, within_id) {
+add_within <- function(url, ep, within, within_id) {
   stopifnot(within_id != "")
-  stopifnot(within %in% names(within_opts))
-  stopifnot(within %in% within_opts[within])
+  stopifnot(ep %in% names(within_opts))
+  stopifnot(within %in% within_opts[ep])
 
   add_ep(url, within, within_id)
 }
