@@ -30,6 +30,8 @@ eps <- c(simple_eps, names(within_opts))
 #' @return full url, character of length 1
 #' @export
 #'
+#' @importFrom magrittr %>%
+#'
 #' @examples
 #' get_url("secretxxxx", "budgets")
 #' get_url("secretxxxx", "budgets", 1244)
@@ -67,9 +69,7 @@ add_within <- function(url, ep, within, within_id) {
 #' @param token access token
 #'
 #' @return url w/ access token as parameter
-#' @export
 #'
-#' @examples
 #' add_token("https://a_url", "secret_token_xxxx")
 add_token <- function(url, token) {
   glue::glue("{url}?access_token={token}")
@@ -84,7 +84,6 @@ add_token <- function(url, token) {
 #'
 #' @return url with endpoint added
 #'
-#' @examples
 #' add_ep("http://google.com", "endpoint")
 #' add_ep("http://google.com", "endpoint", "id")
 add_ep <- function(url, ep, id = "") {
