@@ -1,1 +1,2 @@
 [![Travis-CI Build Status](https://travis-ci.org/akgold/ynabR.svg?branch=master)](https://travis-ci.org/akgold/ynabR)
+[![Coverage Status](https://img.shields.io/codecov/c/github/akgold/ynabR/master.svg)](https://codecov.io/github/akgold/ynabR?branch=master)

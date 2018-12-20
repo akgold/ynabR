@@ -11,4 +11,5 @@ Description: You Need a Budget (YNAB) is a wonderful web app for budgeting.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Suggests: testthat
+Suggests: testthat,
+    covr
