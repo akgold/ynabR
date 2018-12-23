@@ -35,18 +35,28 @@ eps <- c(simple_eps, names(within_opts))
 #' @examples
 #' get_url("secretxxxx", "budgets")
 #' get_url("secretxxxx", "budgets", 1244)
-get_url <- function(token, ep, id = "",
+get_url <- function(token, ep, id = "", budget_id = "",
                       within = "", within_id = "") {
   stopifnot(ep %in% eps)
 
-  base_url %>%
+ url <-  base_url
+
+ if (!ep %in% c("user", "budgets")) {
+   stopifnot(budget_id != "")
+
+   url <- add_ep(url, "budgets", budget_id)
+ }
+
+ url %>%
     url_ep(ep, id, within, within_id) %>%
     add_token(token)
 }
 
-url_ep <- function(url, ep, id = "",
+url_ep <- function(url, ep, id = "", budget_id = "",
                    within = "", within_id = "") {
   stopifnot(ep %in% eps)
+
+
   if (within != "") {
     url <- add_within(url, ep, within, within_id)
   }
